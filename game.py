@@ -12,12 +12,14 @@ class Game:
 #def Intro. Do you want to see the rules? 
 #if yes, display rules
     def intro(self):
+        print('')
         self.turn_counter = 0               #need to reset this if user plays again 
         print('It\'s time for rock, paper, scissors, lizard, Spock.')
         user_input = ''
         while user_input != 'y' and user_input != 'n':
             user_input = input('Do you want to see the rules? Enter y or n').lower()
             if user_input == 'y':
+                print('')
                 print('Best 2 out of 3')
                 print('Scissors cuts paper, paper covers rock,')
                 print('rock crushes lizard, lizard poisons Spock,')
@@ -30,6 +32,7 @@ class Game:
                 print('Error.')
 
     def choose_players(self):
+        print('')
         user_input = ''
         while user_input != '1' and user_input != '2' and user_input != '3':
             user_input = input('Enter 1 for one player, 2 for two players, or 3 to spectate').lower()
@@ -53,6 +56,7 @@ class Game:
     def one_round(self):
         self.player_1.choose_gesture()
         self.player_2.choose_gesture()
+        print('')
         print(f'{self.player_1.name} used {self.player_1.active_gesture}')
         print(f'{self.player_2.name} used {self.player_2.active_gesture}')
         winner = self.compare_gesture()
@@ -68,6 +72,7 @@ class Game:
 #technically, I could replace the 5 tied cases with one if statement
 
     def compare_gesture(self):
+        print('')
         if self.player_1.active_gesture == 'rock' and self.player_2.active_gesture == 'rock':
             return 'This one was a tie.'
         elif self.player_1.active_gesture == 'rock' and self.player_2.active_gesture == 'paper':
@@ -151,7 +156,8 @@ class Game:
         self.choose_players()
         while self.player_1.win_counter < 2 and self.player_2.win_counter < 2:
             self.one_round()
+        print('')
         if self.player_1.win_counter > self.player_2.win_counter:
-            print(f'Congratulations to {self.player_1.name} for winning!')
+            print(f'Congratulations to {self.player_1.name} for winning 2 out of 3!')
         else:
-            print(f'Congratulations to {self.player_2.name} for winning!')
+            print(f'Congratulations to {self.player_2.name} for winning 2 out of 3!')

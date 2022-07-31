@@ -7,6 +7,7 @@ class Human(Player):
         super().__init__(name)
     
     def choose_gesture(self):
+        print('')
         print(f' {self.name}, select your move: ')
         for x in range(len(self.gestures)):
             print(f'{x} for {self.gestures[x]}')
